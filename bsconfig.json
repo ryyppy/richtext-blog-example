@@ -1,0 +1,24 @@
+{
+    "name": "richtext-blog-example",
+    "namespace": false,
+    "reason": { "react-jsx": 3 },
+    "refmt": 3,
+    "bs-dependencies": ["reason-react"],
+    "ppx-flags": [],
+    "sources": [
+      { "dir": "lib" },
+      { "dir": "pages", "subdirs": true }
+    ],
+    "package-specs": {
+      "module": "commonjs",
+      "in-source": true
+    },
+    "suffix": ".bs.js",
+    "bsc-flags": ["-bs-no-version-header", "-bs-super-errors", "-bs-g"],
+    "gentypeconfig": {
+      "language": "typescript",
+      "shims": [],
+      "module": "commonjs"
+    }
+  }
+  

@@ -2,12 +2,28 @@ import React from "react";
 import type { RichText } from "../lib/rich-text";
 import { render } from "../lib/rich-text";
 
-const data: RichText = require("../data/storyblok-richtext-data.json");
+import { render as reasonRender } from "../lib/RichText.gen";
+import type { t as ReasonRichText } from "../lib/RichText.gen";
+ 
+const renderTS = () => {
+    const data: RichText = require("../data/storyblok-richtext-data.json");
+    return render({doc: data})
+}
 
+const renderRE = () => {
+    const data: ReasonRichText = require("../data/storyblok-richtext-data.json");
+    return reasonRender({context: "Default"}, data);
+};
 
 const Home = () => <div>
-    <h1>Rendered Richtext:</h1>
-    {render({doc: data})}
+    <div>
+        <h2>Rendered RichText (TS):</h2>
+        {renderTS()}
+    </div>
+    <div>
+        <h2> Rendered RichText (Reason):</h2>
+        {renderRE()}
+    </div>
 </div>;
 
 export default Home;
