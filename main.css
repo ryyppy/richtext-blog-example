@@ -1,0 +1,13 @@
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+ol, ul {
+    list-style: none;
+    padding: 0;
+}
