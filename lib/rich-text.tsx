@@ -73,11 +73,13 @@ interface Ul {
 type Context = Default | Ol | Ul;
 
 export const render = (input: {
+  key?: string;
   ctx?: Context;
   doc: RichText;
 }): React.ReactElement => {
   const ctx = input.ctx || { type: "default" };
   const doc = input.doc;
+  const key = input.key;
 
   switch (doc.type) {
     case "paragraph":
@@ -85,8 +87,8 @@ export const render = (input: {
     case "bullet_list":
     case "ordered_list":
     case "list_item":
-      let elements = doc.content.map(rt => {
-        return render({ ctx, doc: rt });
+      let elements = doc.content.map((rt, i) => {
+        return render({ key: i.toString(), ctx, doc: rt });
       });
 
       switch (doc.type) {
@@ -103,23 +105,23 @@ export const render = (input: {
               break;
           }
           return (
-            <p>
+            <p key={key}>
               {before} {elements}{" "}
             </p>
           );
         case "ordered_list":
           elements = doc.content.map((rt, i) => {
-            let ctx: Context = { type: "ol", num: i + 1 };
-            return render({ ctx, doc: rt });
+            const ctx: Context = { type: "ol", num: i + 1 };
+            return render({ key: i.toString(), ctx, doc: rt });
           });
-          return <ol> {elements} </ol>;
+          return <ol key={key}> {elements} </ol>;
         case "bullet_list":
-          elements = doc.content.map(rt => {
-            return render({ ctx: { type: "ul" }, doc: rt });
+          elements = doc.content.map((rt,i) => {
+            return render({ key: i.toString(), ctx: { type: "ul" }, doc: rt });
           });
-          return <ul> {elements} </ul>;
+          return <ul key={key}> {elements} </ul>;
         case "list_item":
-          return <li> {elements} </li>;
+          return <li key={key}> {elements} </li>;
       }
     case "text":
       let link;
@@ -142,12 +144,12 @@ export const render = (input: {
 
       if (link != null) {
         return (
-          <a href={link.attrs.href} className={className}>
+          <a key={key} href={link.attrs.href} className={className}>
             {doc.text}
           </a>
         );
       }
 
-      return <span className={className}> {doc.text} </span>;
+      return <span key={key} className={className}> {doc.text} </span>;
   }
 };
