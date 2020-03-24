@@ -8,6 +8,10 @@ Goal is to discuss major differences in pattern-matching behavior of [Discrimina
 
 ```
 npm install
+
+# build reason code
+npm run re:build
+
 npm run dev
 
 # open localhost:3000
