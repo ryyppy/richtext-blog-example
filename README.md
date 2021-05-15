@@ -1,16 +1,16 @@
 # Storyblok RichText Rendering Demo
 
-This is a demonstration on how to represent RichText data from a Storyblok CMS instance in TypeScript & ReasonML.
+This is a demonstration on how to represent RichText data from a Storyblok CMS instance in TypeScript & ReScript.
 
-Goal is to discuss major differences in pattern-matching behavior of [Discriminated Union Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions), which in TS are represented as objects & interface type definitions, and as [variant types](https://reasonml.org/docs/manual/latest/variant) in ReasonML.
+Goal is to discuss major differences in pattern-matching behavior of [Discriminated Union Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions), which in TS are represented as objects & interface type definitions, and as [variant types](https://rescript-lang.org/docs/manual/latest/variant) in ReScript.
 
 ## Running the Code
 
 ```
 npm install
 
-# build reason code
-npm run re:build
+# build ReScript code
+npx rescript
 
 npm run dev
 

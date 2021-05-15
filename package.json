@@ -6,10 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "re:start": "bsb -make-world -w",
-    "re:clean": "bsb -clean-world",
-    "re:build": "bsb -make-world"
+    "start": "next start"
   },
   "keywords": [],
   "author": "",
