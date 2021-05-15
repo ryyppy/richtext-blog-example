@@ -1,9 +1,9 @@
 import React from "react";
-import type { RichText } from "../lib/rich-text";
-import { render } from "../lib/rich-text";
+import type { RichText } from "../src/rich-text";
+import { render } from "../src/rich-text";
 
-import { render as reasonRender } from "../lib/RichText.gen";
-import type { t as ReasonRichText } from "../lib/RichText.gen";
+import { render as reasonRender } from "../src/RichText.gen";
+import type { t as ReasonRichText } from "../src/RichText.gen";
  
 const renderTS = () => {
     const data: RichText = require("../data/storyblok-richtext-data.json");
