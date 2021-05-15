@@ -19,9 +19,15 @@ let input: RichText.t = %raw(`
 let rec printTexts = (input: RichText.t) =>
   switch RichText.classify(input) {
   | Doc(content)
-  | Paragraph(content) =>
+  | ListItem(content) =>
+    Js.log("Listitem content:")
     Belt.Array.forEach(content, printTexts)
+  | Paragraph(content) => Belt.Array.forEach(content, printTexts)
   | Text({text}) => Js.log(text)
+  | BulletList(content) =>
+    Js.log("Bullet List")
+    Belt.Array.forEach(content, printTexts)
+  | OrderedList(items) => Js.log2("ordered list", items)
   | Unknown(value) => Js.log2("Unknown value found: ", value)
   }
 
